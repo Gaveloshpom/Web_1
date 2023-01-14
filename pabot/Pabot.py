@@ -13,7 +13,8 @@ from Message import (AddContactMessage,
                      ValueErrorMessage,
                      BirthdaysAfterDaysMessage,
                      AddContactEmaiMessage,
-                     Show_all,)
+                     Show_all,
+                     Show_notes,)
 import re
 
 # книга контактів і нотатки
@@ -166,6 +167,9 @@ def add_note_description(data: str):
     else:
         raise KeyError
 
+def show_notes(*args):
+    return Show_notes.get_message(notes=NOTES)
+
 
 # Видалити описання нотатку
 def del_note_description(data: str):
@@ -233,7 +237,7 @@ COMMANDS = {'hello': greeting,
             'tag': add_note_tag,
             'untag': del_note_tag,
             'search notes': NOTES.finder,
-            'show notes': NOTES.show_notes,
+            'show notes': show_notes,
             'add email': add_email,
             'change email': change_email,
             'sort by tag': NOTES.notes_sort,
@@ -407,7 +411,6 @@ def main():
             user_request = input('Wait for your command master: ')
             result = get_user_request(user_request)
             print(result)
-            
             if result == 'Good bye!':
                 break
     finally:

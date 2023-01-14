@@ -41,6 +41,12 @@ class HelpMessage(Message):
 >>> good bye/close/exit - bye bye\n
 '''
 
+class Show_notes(Message):
+    @staticmethod
+    def get_message(notes):
+        tmp = [val for val in notes.data.values()]
+        return "".join(list(map(lambda x: str(x), tmp)))
+
 class Show_all(Message):
 
     @staticmethod
