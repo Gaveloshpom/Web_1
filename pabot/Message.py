@@ -42,6 +42,7 @@ class HelpMessage(Message):
 '''
 
 class Show_notes(Message):
+    
     @staticmethod
     def get_message(notes):
         tmp = [val for val in notes.data.values()]
